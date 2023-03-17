@@ -1,7 +1,9 @@
-﻿#include <stdio.h>
+﻿//cout객체 사용 이유
+#include <iostream>
 
 int main(void) {
-	printf("Hello World\n");
+	// << 출력연산자
+	std::cout << "Hello World\n";
 
 	return 0;
 }
