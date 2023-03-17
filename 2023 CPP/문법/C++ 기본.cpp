@@ -3,7 +3,8 @@
 
 int main(void) {
 	// << 출력연산자
-	std::cout << "Hello World\n";
+	// endl : 기행
+	std::cout << "Hello World" << std::endl;
 
 	return 0;
 }
