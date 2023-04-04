@@ -7,16 +7,6 @@ using namespace std;
 // 구조체, 클래스는 일반적으로 단어의 첫글자를 대문자로 한다
 // 클래스가 디폴트 private (struct는 디폴트가 public)
 class Student {
-	// 성능때문에 num을 문자열로 하지 않음
-	// 일반적으로 문자열은 정수형 데이텁다 많은 메모리 공간을 요구하며
-	// 정수는 비교연산을 한번에 할 수 있으나, 문자열은 글자수 만큼 반복하여 비교해야함
-public:
-	int num;
-	string name;
-	string tel;
-	string department;
-	string address;
-
 public:
 	// 생성자(constructor) : 객체를 생성될 때 호출되는 함수
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다
@@ -38,7 +28,18 @@ public:
 		cout << "학과 : " << department << endl;
 		cout << "주소 : " << address << endl;
 	}
+
+private:
+	// 성능때문에 num을 문자열로 하지 않음
+	// 일반적으로 문자열은 정수형 데이텁다 많은 메모리 공간을 요구하며
+	// 정수는 비교연산을 한번에 할 수 있으나, 문자열은 글자수 만큼 반복하여 비교해야함
+	int num;
+	string name;
+	string tel;
+	string department;
+	string address;
 };
+
 
 int main(void) 
 {
