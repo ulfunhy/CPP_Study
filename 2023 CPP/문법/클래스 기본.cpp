@@ -19,6 +19,15 @@ public:
 		address = "경기도 과천시";
 	}
 
+	Student(int _num, string _name, string _tel, string _department, string _address)
+	{
+		num = _num;
+		name = _name;
+		tel = _tel;
+		department = _department;
+		address = _address;
+	}
+
 	// class 멤버 함수를 가질 수 있다
 	void print(void)
 	{
@@ -43,11 +52,13 @@ private:
 
 int main(void) 
 {
-	// 자료형 : struct Student(C++에서는 pizza만 써도 가능
-	Student stu1;
-	
+	// 매개변수가 없는 생성자
+	// Student stu1;
+	Student stu1 = Student();
+	// stu1.print();		// 호출
 
-	stu1.print();		// 호출
+	Student stu2 = Student(2213, "이현진", "010-8641-3308", "뉴미디어소프트웨어과", "경기도 과천시");
+	stu2.print();
 
 	return 0;
 }
