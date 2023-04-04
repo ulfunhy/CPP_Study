@@ -17,9 +17,17 @@ public:
 	string department;
 	string address;
 
+public:
 	// 생성자(constructor) : 객체를 생성될 때 호출되는 함수
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의된다
-	// Student() {}
+	Student() 
+	{
+		num = 2213;
+		name = "이현진";
+		tel = "010-8641-3308";
+		department = "뉴미디어소프트웨어과";
+		address = "경기도 과천시";
+	}
 
 	// class 멤버 함수를 가질 수 있다
 	void print(void)
@@ -36,11 +44,7 @@ int main(void)
 {
 	// 자료형 : struct Student(C++에서는 pizza만 써도 가능
 	Student stu1;
-	stu1.num = 2213;
-	stu1.name = "이현진";
-	stu1.tel = "010-8641-3308";
-	stu1.department = "뉴미디어소프트웨어과";
-	stu1.address = "경기도 과천시";
+	
 
 	stu1.print();		// 호출
 
