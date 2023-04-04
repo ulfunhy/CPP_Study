@@ -3,6 +3,12 @@
 
 using namespace std;
 
+struct Person
+{
+	int height;
+	int weight;
+};
+
 // 여러 data들을 하나의 의미있는 구조체로 묶어서 관리
 // 구조체, 클래스는 일반적으로 단어의 첫글자를 대문자로 한다
 // 클래스가 디폴트 private (struct는 디폴트가 public)
@@ -49,7 +55,6 @@ private:
 	string address;
 };
 
-
 int main(void) 
 {
 	// 매개변수가 없는 생성자
@@ -58,7 +63,16 @@ int main(void)
 	// stu1.print();		// 호출
 
 	Student stu2 = Student(2213, "이현진", "010-8641-3308", "뉴미디어소프트웨어과", "경기도 과천시");
-	stu2.print();
+	// stu2.print();
+
+	struct Person p;
+	p.height = 153;
+	p.weight = 52;
+
+	struct Person* ptr = &p;
+	
+	cout << "키 : " << (*ptr).height << endl;
+	cout << "몸무게 : " << (*ptr).weight << endl;
 
 	return 0;
 }
