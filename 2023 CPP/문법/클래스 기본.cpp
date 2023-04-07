@@ -54,8 +54,15 @@ int main(void)
 	Student stu1 = Student();
 	// stu1.print();		// 호출
 
-	Student stu2 = Student(2213, "이현진", "010-8641-3308", "뉴미디어소프트웨어과", "경기도 과천시");
-	stu2.print();
+
+	// 정적할당
+	// Student stu2 = Student(2213, "이현진", "010-8641-3308", "뉴미디어소프트웨어과", "경기도 과천시");
+	// stu2.print();
+
+	//동적할당
+	Student* stu3 = new Student(22, "율곡", "010-0000-0000", "유교", "한성");
+	stu3->print();
+
 
 	return 0;
 }
