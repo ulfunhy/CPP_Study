@@ -4,7 +4,7 @@
 
 using namespace sf;
 
-int main(void) 
+int main(void)
 {
 	RenderWindow window(VideoMode(640, 480), "Snake Game");	// 윈도우 창 만들기
 
@@ -20,9 +20,9 @@ int main(void)
 	RectangleShape apple;
 	apple.setFillColor(Color::Red);
 	// 640에 50을 뺀 이유는 사과가 화면 밖에 벗어나지 않게 하기 위함
-	apple.setPosition(rand()%(640-50), rand()%(480-50));
+	apple.setPosition(rand() % (640 - 50), rand() % (480 - 50));
 	apple.setSize(Vector2f(50, 50));
-	
+
 	while (window.isOpen())
 	{
 		Event e;
@@ -35,15 +35,15 @@ int main(void)
 
 		if (Keyboard::isKeyPressed(Keyboard::Right))
 			snake.move(5, 0);
-		if (Keyboard::isKeyPressed(Keyboard::Left))
+		else if (Keyboard::isKeyPressed(Keyboard::Left))
 			snake.move(-5, 0);
-		if (Keyboard::isKeyPressed(Keyboard::Up))
+		else if (Keyboard::isKeyPressed(Keyboard::Up))
 			snake.move(0, -5);
-		if (Keyboard::isKeyPressed(Keyboard::Down))
+		else if (Keyboard::isKeyPressed(Keyboard::Down))
 			snake.move(0, 5);
 
 		// 뱀이 사과를 먹었을 때, 
-		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {	
+		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
 			apple.setPosition(rand() % (640 - 50), rand() % (480 - 50));
 		}
 
@@ -54,6 +54,6 @@ int main(void)
 
 		window.display();
 	}
-	
+
 	return 0;	// 창 지우기
 }
