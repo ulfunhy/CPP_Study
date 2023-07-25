@@ -110,6 +110,21 @@ int main(void)
 	// Frame Per Second를 30으로 조절
 	window.setFramerateLimit(15);
 
+	Font font;
+	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	{
+		printf("폰트 불러오기 실패");
+		return -1;
+	}
+
+	Text t_info;
+	t_info.setFont(font);
+	t_info.setFillColor(Color::White);
+	t_info.setCharacterSize(30);
+	t_info.setPosition(0, 0);
+
+	char t_info_buf[100];
+
 	Snake snake = Snake(DIR_DOWN, 1, 0);		// Snake생성자에서 값을 넣어주면 값을 주지 않아도 오류가 생기지 않음
 	snake.InitBody();
 
@@ -146,7 +161,8 @@ int main(void)
 
 		// update
 
-		printf("score : %d\n", snake.GetScore());
+		sprintf(t_info_buf, "score : %d\n", snake.GetScore());	// t_info_buf 안에 "score : %d\n", snake.GetScore()를 넣어줌
+		t_info.setString(t_info_buf);	// 글씨가 계속 갱신됨
 
 		snake.UpdateBody();
 		snake.UpdateHead();
@@ -171,6 +187,7 @@ int main(void)
 		for (int i = 0; i < snake.GetLength(); i++)
 			window.draw(snake.GetBody()[i].sprite_);
 		window.draw(apple.sprite_);	// draw를 늦게 할 수로 더 위에 있다.
+		window.draw(t_info);
 
 		window.display();
 	}
