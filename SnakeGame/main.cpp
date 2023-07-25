@@ -28,16 +28,20 @@ public:
 class Snake {
 
 public:
-	Snake(int dir, int length) : dir_(dir), length_(length)
+	Snake(int dir, int length, int score = 0) : dir_(dir), length_(length), score_(score)		// Snake생성자에서 값을 넣어주면 값을 주지 않아도 오류가 생기지 않음
 	{}
 
-	int GetDir(void) { return dir_; }
-	int GetLength(void) { return length_; }
+	int GetDir() { return dir_; }
+	int GetLength() { return length_; }
+	int GetScore() { return score_; }
 	Object* GetBody() { return body_; }
 
 	void SetDir(int dir) { dir_ = dir; }
 	void SetLegth(int length) { length_ = length; }
+	void SetScore(int score) { score_ = score; }
+
 	void IncLength(void) { length_++; }
+	void IncScore(int val) { score_ += val; }
 
 	// body 초기화
 	void InitBody(void) {
@@ -85,6 +89,7 @@ public:
 private:
 	int dir_;
 	int length_;
+	int score_;
 	Object body_[BODY_MAX];
 };
 
@@ -105,7 +110,7 @@ int main(void)
 	// Frame Per Second를 30으로 조절
 	window.setFramerateLimit(15);
 
-	Snake snake = Snake(DIR_DOWN, 1);
+	Snake snake = Snake(DIR_DOWN, 1, 0);		// Snake생성자에서 값을 넣어주면 값을 주지 않아도 오류가 생기지 않음
 	snake.InitBody();
 
 	Apple apple;
@@ -140,14 +145,20 @@ int main(void)
 		}
 
 		// update
+
+		printf("score : %d\n", snake.GetScore());
+
 		snake.UpdateBody();
 		snake.UpdateHead();
 
 		// 뱀이 사과를 먹었을 때, 
-		if (snake.GetBody()[0].x_ == apple.x_ && snake.GetBody()[0].y_ == apple.y_) {
+		if (snake.GetBody()[0].x_ == apple.x_ && snake.GetBody()[0].y_ == apple.y_) 
+		{
 			// 사과 위치전환
 			apple.x_ = rand() % G_WIDTH, apple.y_ = rand() % G_HEIGHT;
 			apple.sprite_.setPosition(apple.x_ * BLOCK_SIZE, apple.y_ * BLOCK_SIZE);
+
+			snake.IncScore(5);
 
 			// 뱀의 길이를 변화
 			if (snake.GetLength() < 20)
