@@ -162,7 +162,7 @@ int main(void)
 		// update
 
 		sprintf(t_info_buf, "score : %d\n", snake.GetScore());	// t_info_buf 안에 "score : %d\n", snake.GetScore()를 넣어줌
-		t_info.setString(t_info_buf);	// 글씨가 계속 갱신됨
+		t_info.setString(t_info_buf);	// 글씨가 계속 갱신됨(저장이 되는 개념(but 실시간으로 계속 되기 때문에 갱신이라는 말을 이용함))
 
 		snake.UpdateBody();
 		snake.UpdateHead();
