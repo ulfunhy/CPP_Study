@@ -111,7 +111,8 @@ int main(void)
 	window.setFramerateLimit(15);
 
 	Font font;
-	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	// 한글이 지원되는 폰트로 변경
+	if (!font.loadFromFile("C:\\Windows\\Fonts\\H2GSRB.ttf"))
 	{
 		printf("폰트 불러오기 실패");
 		return -1;
@@ -123,7 +124,8 @@ int main(void)
 	t_info.setCharacterSize(30);
 	t_info.setPosition(0, 0);
 
-	char t_info_buf[100];
+	// 유니코드(한글)를 호환하기 위한 자료형으로 변경
+	wchar_t t_info_buf[100];		
 
 	Snake snake = Snake(DIR_DOWN, 1, 0);		// Snake생성자에서 값을 넣어주면 값을 주지 않아도 오류가 생기지 않음
 	snake.InitBody();
@@ -161,7 +163,8 @@ int main(void)
 
 		// update
 
-		sprintf(t_info_buf, "score : %d\n", snake.GetScore());	// t_info_buf 안에 "score : %d\n", snake.GetScore()를 넣어줌
+		// 유니코드를 사용하기 위해서는 sprintf를 swprintf로 바꾸고 문자열 앞에 L을 붙임
+		swprintf(t_info_buf, L"점수 : %d\n", snake.GetScore());	// t_info_buf 안에 "score : %d\n", snake.GetScore()를 넣어줌
 		t_info.setString(t_info_buf);	// 글씨가 계속 갱신됨(저장이 되는 개념(but 실시간으로 계속 되기 때문에 갱신이라는 말을 이용함))
 
 		snake.UpdateBody();
